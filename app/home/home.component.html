@@ -1,0 +1,34 @@
+<ActionBar class="action-bar" title="{{titulo}}">
+    <NavigationButton text="Volta" android.systemIcon="ic_menu_back" *ngIf="FichaNoticia" (tap)="fechaNoticia()"></NavigationButton>
+    <NavigationButton text="Sair" android.systemIcon="ic_menu_close_clear_cancel" *ngIf="ListaNoticias" (tap)="Logout()"></NavigationButton>
+</ActionBar>
+
+<FlexboxLayout class="page" *ngIf="ListaNoticias">
+    <ListView id="lista-noticias" [items]="itensjson" (itemTap)="onItemTap($event)" class="list-group">
+        <ng-template let-titulo="item" let-i="index" let-odd="odd" let-even="even">
+            <!-- The item template can only have a single root view container (e.g. GridLayout, StackLayout, etc.)-->
+            <StackLayout orientation="horizontal" class="list-group-item">
+                <Image width="105" height="105" stretch="aspectFill" [src]="titulo.image_thumb.replace('http', 'https')" class="thumb m-b-20"></Image>
+                <StackLayout>
+                    <Label [text]="titulo.title"></Label>
+                    <Label [text]="titulo.description" textWrap="true" WidthRequest="50"  class="body texto-resumo"></Label>
+                </StackLayout>
+            </StackLayout>
+        </ng-template>
+    </ListView>
+</FlexboxLayout>
+
+<GridLayout class="page" *ngIf="FichaNoticia">
+        <ScrollView #scrollView (scroll)="onScroll($event, scrollView, topView)">
+                <StackLayout>
+                    <StackLayout #topView height="250" style="background-image: url('{{imagem_noticia.replace('http', 'https')}}'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+                    </StackLayout>
+                    <StackLayout width="100%" backgroundColor="white" padding="10">
+                        <!--Add your page content here-->
+                        <Label textWrap="true" text="{{titulo_noticia}}" class="h2 description-label"></Label>
+                        <Label textWrap="true" class="p-10" text="{{texto_noticia}}."></Label>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+</GridLayout>
+

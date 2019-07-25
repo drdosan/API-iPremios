@@ -1,0 +1,22 @@
+<FlexboxLayout class="page">
+	<StackLayout class="form">
+		<Image class="logo" src="~/images/logo.png"></Image>
+
+
+		<StackLayout class="input-field">
+			<TextField class="input" hint="E-mail" keyboardType="email" autocorrect="false" autocapitalizationType="none" [(ngModel)]="user.email"></TextField>
+			<StackLayout class="hr-light"></StackLayout>
+		</StackLayout>
+
+		<StackLayout class="input-field">
+			<TextField class="input" hint="Senha" secure="true" [(ngModel)]="user.password"></TextField>
+			<StackLayout class="hr-light"></StackLayout>
+		</StackLayout>
+
+
+		<Button text="Entrar" (tap)="submit()" class="btn btn-primary m-t-20"></Button>
+		
+	</StackLayout>
+
+
+</FlexboxLayout>
