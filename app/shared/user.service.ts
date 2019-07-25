@@ -65,9 +65,3 @@ export class UserService {
     }
 }
 
-interface LoginResponse {
-    _kmd: any
-}
-interface KMD {
-    access_token: string
-}
